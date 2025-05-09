@@ -11,7 +11,7 @@ public class ExpenseEntry {
     private LocalDateTime date;
     private CurrencyCode currency;
 
-    public ExpenseEntry( String description,   CurrencyCode currency, double amount, LocalDateTime date) {
+    public ExpenseEntry( String description, CurrencyCode currency, double amount, LocalDateTime date) {
         this.amount = amount;
         this.description = description;
         this.date = date;

@@ -19,7 +19,7 @@ public class ExpenseManagerDriver {
 
         CurrencyProvider currencyProvider = new CurrencyProvider();
         ExpenseCalculator expenseCalculator = new ExpenseCalculator(currencyProvider,
-                CurrencyCode.INR, new XmlExpenseParser(new XMLValidator()));
+                CurrencyCode.INR, new XmlExpenseParser());
 
         double totalExpense = expenseCalculator.calculateTotalExpense(props);
         System.out.printf("Total Expense " + totalExpense);
