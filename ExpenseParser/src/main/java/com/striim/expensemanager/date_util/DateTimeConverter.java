@@ -7,7 +7,7 @@ import java.util.Locale;
 public class DateTimeConverter {
 
     public static LocalDateTime convertToDateTime(String dateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy HH:mm", Locale.ENGLISH);
         LocalDateTime dateTime = LocalDateTime.parse(dateStr + " 00:00",formatter);
         return dateTime;
     }
