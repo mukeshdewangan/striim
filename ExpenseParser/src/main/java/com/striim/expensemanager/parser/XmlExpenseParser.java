@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 import com.striim.expensemanager.validator.XMLValidator;
@@ -39,7 +40,7 @@ public class XmlExpenseParser implements ExpenseFileParser {
     public void printReport() {}
 
     @Override
-    public List<ExpenseEntry> parse(String filePath, String... schemaFile) {
+    public Iterator<ExpenseEntry> parse(String filePath, String... schemaFile) {
         if (!fileValidator.isValidFile(filePath, schemaFile)) {
             throw new RuntimeException("Invalid file");
         }
@@ -47,8 +48,8 @@ public class XmlExpenseParser implements ExpenseFileParser {
         //List<ExpenseEntry> expenseEntries = parseInternal(filePath);
         List<ExpenseEntry> expenseEntries = new ArrayList<>();
         try {
-            expenseEntries = parseLargeXML(filePath, schemaFile);
-            return expenseEntries;
+            Iterator<ExpenseEntry> iterator = parseLargeXML(filePath, schemaFile);
+            return iterator;
         }
         catch (Exception e){
             System.out.println("Error: " + e.getMessage());
@@ -92,7 +93,7 @@ public class XmlExpenseParser implements ExpenseFileParser {
         return expenses;
     }
 
-    private List<ExpenseEntry> parseLargeXML(String expenseFilePath, String... xsdFilePath) throws SAXException, ParserConfigurationException, IOException {
+    private Iterator<ExpenseEntry> parseLargeXML(String expenseFilePath, String... xsdFilePath) throws SAXException, ParserConfigurationException, IOException {
         File xmlFile = new File(expenseFilePath);
         File xsdFile = new File(xsdFilePath[0]);
 
@@ -107,8 +108,19 @@ public class XmlExpenseParser implements ExpenseFileParser {
         ExpenseHandler expenseHandler = new ExpenseHandler();
 
         reader.setContentHandler(new CombinedHandler(validatorHandler, expenseHandler));
-        reader.parse(new InputSource(xmlFile.getAbsolutePath()));
-        return expenseHandler.getExpenses();
-    }
+        try {
+            reader.parse(new InputSource(xmlFile.getAbsolutePath()));
+        } finally {
+            // Ensure poison pill is always inserted
+            expenseHandler.signalEndOfStream();
+        }
 
+        //return expenseHandler.getExpenses();
+//        for (ExpenseEntry entry : expenseHandler) {
+//            // Process each entry lazily
+//            System.out.println(entry);
+//
+//        }
+        return expenseHandler.iterator();
+    }
 }

@@ -8,16 +8,23 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import java.util.NoSuchElementException;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import static com.striim.expensemanager.expense.Constants.*;
 import static com.striim.expensemanager.expense.Constants.EXPENSE;
 
 // Logic to process XML elements without loading everything
-public class ExpenseHandler extends DefaultHandler {
+public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEntry> {
+    private final BlockingQueue<ExpenseEntry> queue = new LinkedBlockingQueue<>();
+    private static final ExpenseEntry POISON_PILL_ENTRY = new ExpenseEntry("EOF", null, 0, null);
+    private static final String POISON_PILL = "##EOF##";
     private StringBuilder content = new StringBuilder();
-    public List<ExpenseEntry> expenses = new ArrayList<>();
-
+    //public List<ExpenseEntry> expenses = new ArrayList<>();
+    private boolean finished = false;
     private String description, currency, date;
     private double amount;
 
@@ -29,6 +36,17 @@ public class ExpenseHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         content.append(ch, start, length);
+    }
+
+    @Override
+    public void endDocument() {
+        finished = true;
+        try {
+            queue.put(POISON_PILL_ENTRY);
+        }
+        catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     @Override
@@ -51,12 +69,55 @@ public class ExpenseHandler extends DefaultHandler {
                 LocalDateTime dateTime = DateTimeConverter.convertToDateTime(date);
                 ExpenseEntry entry = new ExpenseEntry(description, currencyC, amount, dateTime);
                 //System.out.println(entry);
-                expenses.add(entry);
+                //expenses.add(entry);
+                try {
+                    queue.put(entry);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while enqueueing entry", e);
+                }
                 break;
         }
     }
 
-    public List<ExpenseEntry> getExpenses() {
-        return expenses;
+    @Override
+    public Iterator<ExpenseEntry> iterator() {
+        return new Iterator<ExpenseEntry>() {
+            private ExpenseEntry nextEntry;
+
+            @Override
+            public boolean hasNext() {
+                if (nextEntry != null) return true;
+
+                try {
+                    nextEntry = queue.take();
+                    if (nextEntry == POISON_PILL_ENTRY) return false;
+                    return true;
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return false;
+                }
+            }
+
+            @Override
+            public ExpenseEntry next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                ExpenseEntry entry = nextEntry;
+                nextEntry = null;
+                return entry;
+            }
+        };
+    }
+
+//    public List<ExpenseEntry> getExpenses() {
+//        return expenses;
+//    }
+
+    public void signalEndOfStream() {
+        try {
+            queue.put(POISON_PILL_ENTRY);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
