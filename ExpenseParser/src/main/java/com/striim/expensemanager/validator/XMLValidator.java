@@ -1,0 +1,39 @@
+package com.striim.expensemanager.validator;
+
+
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class XMLValidator implements FileValidator {
+
+    @Override
+    public boolean isValidFile(String filePath, String... schemaFile) {
+        try (
+            InputStream xml = Files.newInputStream(Paths.get(filePath));
+            InputStream xsd = Files.newInputStream(Paths.get(schemaFile[0]))
+        ) {
+            if (xml == null || xsd == null) {
+                System.out.println("Missing XML or XSD file.");
+                return false;
+            }
+
+            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema schema = schemaFactory.newSchema(new StreamSource(xsd));
+            Validator validator = schema.newValidator();
+
+            validator.validate(new StreamSource(xml));
+            System.out.println("XML is valid against the XSD.");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Validation failed: " + e.getMessage());
+            return false;
+        }
+    }
+}
