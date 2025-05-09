@@ -4,11 +4,7 @@ import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.currency.CurrencyProvider;
 import com.striim.expensemanager.expense.ExpenseEntry;
 import com.striim.expensemanager.parser.ExpenseFileParser;
-import com.striim.expensemanager.validator.FileValidator;
 
-import javax.xml.validation.Validator;
-import java.lang.annotation.Target;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Properties;
 
@@ -28,7 +24,7 @@ public class ExpenseCalculator {
 
         double totalExpense = 0;
         for (ExpenseEntry expenseEntry : expenses) {
-            totalExpense += convertExpenseToTarget(expenseEntry, targetCurrency);
+            totalExpense += convertExpenseToTargetCurrency(expenseEntry, targetCurrency);
         }
         return totalExpense;
     }
@@ -41,7 +37,7 @@ public class ExpenseCalculator {
         return parser.parse(expenseFile,xsdFile);
     }
 
-    private double convertExpenseToTarget(ExpenseEntry expenseEntry, CurrencyCode targetCurrency) {
+    private double convertExpenseToTargetCurrency(ExpenseEntry expenseEntry, CurrencyCode targetCurrency) {
         double conversionRate = currencyProvider.getCurrencyValue(expenseEntry.getCurrency(), targetCurrency, expenseEntry.getDate());
         return expenseEntry.getAmount()*(conversionRate);
     }
