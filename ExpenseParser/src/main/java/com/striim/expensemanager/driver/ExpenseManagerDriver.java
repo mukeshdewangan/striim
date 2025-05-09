@@ -14,7 +14,8 @@ public class ExpenseManagerDriver {
     public static void main( String[] args )
     {
         Properties props = new Properties();
-        props.setProperty("expenseFilePath", "src/main/resources/sample_expenses.xml");
+        //props.setProperty("expenseFilePath", "src/main/resources/sample_expenses.xml");
+        props.setProperty("expenseFilePath", "src/main/resources/invalid_expenses.xml");
         props.setProperty("xsdFilePath", "src/main/resources/expenses.xsd");
 
         CurrencyProvider currencyProvider = new CurrencyProvider();
@@ -22,6 +23,6 @@ public class ExpenseManagerDriver {
                 CurrencyCode.INR, new XmlExpenseParser());
 
         double totalExpense = expenseCalculator.calculateTotalExpense(props);
-        System.out.printf("Total Expense " + totalExpense);
+        System.out.printf("Total Expense " + totalExpense + " INR");
     }
 }

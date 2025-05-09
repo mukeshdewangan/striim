@@ -13,7 +13,7 @@ public class CurrencyProvider {
 
         switch (pair) {
             case "USD-INR":
-                return BigDecimal.valueOf(83.20).doubleValue();
+                return BigDecimal.valueOf(82.00).doubleValue();
             case "INR-USD":
                 return BigDecimal.valueOf(0.012).doubleValue();
             case "EUR-USD":

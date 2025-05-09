@@ -34,7 +34,7 @@ public class ExpenseHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         switch (qName) {
-            case "description":
+            case DESCRIPTION:
                 description = content.toString().trim();
                 break;
             case CURRENCYTYPE:
