@@ -3,7 +3,6 @@ package com.striim.expensemanager.parser;
 import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.date_util.DateTimeConverter;
 import com.striim.expensemanager.driver.ConfigLoader;
-import com.striim.expensemanager.driver.ExpenseManagerDriver;
 import com.striim.expensemanager.expense.Constants;
 import com.striim.expensemanager.expense.ExpenseEntry;
 
@@ -25,10 +24,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.*;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.ValidatorHandler;
 
 import java.io.InputStream;
@@ -41,7 +37,6 @@ public class XmlSourceExpenseParser implements InputSourceBase {
     private static final Logger logger = LoggerFactory.getLogger(XmlSourceExpenseParser.class);
     private final String expenseFile;
     XMLValidator xmlValidator;
-    ValidatorHandler validatorHandler;
 
     public XmlSourceExpenseParser(Properties properties){
         expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
@@ -57,7 +52,7 @@ public class XmlSourceExpenseParser implements InputSourceBase {
         // Below is Deprecated - parse the XML file and return the list of ExpenseEntry objects
         //List<ExpenseEntry> expenseEntries = parseInternal(filePath);
         try {
-            Iterator<ExpenseEntry> iterator = parseLargeXML(expenseFile);
+            Iterator<ExpenseEntry> iterator = parseXml(expenseFile);
             return iterator;
         }
         catch (Exception e){
@@ -65,21 +60,20 @@ public class XmlSourceExpenseParser implements InputSourceBase {
         }
     }
 
-    private Iterator<ExpenseEntry> parseLargeXML(String expenseFilePath) throws SAXException, ParserConfigurationException, IOException {
-        validatorHandler = xmlValidator.getValidatorHandler();
+    private Iterator<ExpenseEntry> parseXml(String expenseFilePath) throws SAXException, ParserConfigurationException, IOException {
+        ValidatorHandler validatorHandler = xmlValidator.getValidatorHandler();
 
         File xmlFile = new File(expenseFilePath);
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(true);
         SAXParser saxParser = spf.newSAXParser();
         XMLReader reader = saxParser.getXMLReader();
-        ExpenseHandler expenseHandler = new ExpenseHandler();
+        XmlExpenseHandler expenseHandler = new XmlExpenseHandler();
 
         reader.setContentHandler(new CombinedHandler(validatorHandler, expenseHandler));
         try {
             reader.parse(new InputSource(xmlFile.getAbsolutePath()));
         } finally {
-            // Ensure poison pill is always inserted
             expenseHandler.signalEndOfStream();
         }
 

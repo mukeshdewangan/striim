@@ -17,8 +17,8 @@ import static com.striim.expensemanager.expense.Constants.*;
 import static com.striim.expensemanager.expense.Constants.EXPENSE;
 
 // Logic to process XML elements without loading everything
-public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEntry> {
-    private static final Logger logger = LoggerFactory.getLogger(ExpenseHandler.class);
+public class XmlExpenseHandler extends DefaultHandler implements Iterable<ExpenseEntry> {
+    private static final Logger logger = LoggerFactory.getLogger(XmlExpenseHandler.class);
     private final BlockingQueue<ExpenseEntry> queue = new LinkedBlockingQueue<>();
     private static final ExpenseEntry POISON_PILL_ENTRY = new ExpenseEntry("EOF", null, 0, null);
     private StringBuilder content = new StringBuilder();
