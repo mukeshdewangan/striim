@@ -7,7 +7,13 @@ import java.time.LocalDateTime;
 // TODO: Add a method to get the currency value for a given date
 // Currently it supports some commonly used currency pairs
 public class CurrencyProvider {
-    public CurrencyProvider(){}
+    private static CurrencyProvider instance = new CurrencyProvider();
+
+    public static CurrencyProvider getInstance() {
+        return instance;
+    }
+
+    private CurrencyProvider () {}
 
     public double getCurrencyValue(CurrencyCode sourceCurrencyCode, CurrencyCode targetCurrencyCode, LocalDateTime dateTime) {
         // Dummy currency converter ignoring the datetime part

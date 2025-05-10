@@ -4,26 +4,22 @@ import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.currency.CurrencyProvider;
 import com.striim.expensemanager.expense.ExpenseEntry;
 import com.striim.expensemanager.parser.ExpenseParserBase;
+import com.striim.expensemanager.parser.ParserFactory;
 
 import java.util.Iterator;
 import java.util.Properties;
 
 public class ExpenseCalculator {
-    CurrencyProvider currencyProvider;
+    private final CurrencyProvider currencyProvider;
     ExpenseParserBase parser;
-    CurrencyCode targetCurrency;
 
-    ExpenseCalculator(CurrencyProvider currencyProvider, CurrencyCode targetCurrency, ExpenseParserBase parser){
+    ExpenseCalculator(CurrencyProvider currencyProvider){
         this.currencyProvider = currencyProvider;
-        this.targetCurrency = targetCurrency;
-        this.parser = parser;
     }
 
-    public void setTargetCurrency(CurrencyCode target){
-        this.targetCurrency = target;
-    }
+    public double calculateTotalExpense(Properties properties, CurrencyCode targetCurrency) {
+        this.parser = ParserFactory.getParser(FileType.valueOf(properties.getProperty("fileType")));
 
-    public double calculateTotalExpense(Properties properties) {
         Iterator<ExpenseEntry> expensesIter = calculateExpense(properties);
 
         double totalExpense = 0;

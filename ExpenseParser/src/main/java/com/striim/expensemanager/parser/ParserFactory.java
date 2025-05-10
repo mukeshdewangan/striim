@@ -1,12 +1,15 @@
 package com.striim.expensemanager.parser;
 
+import com.striim.expensemanager.driver.FileType;
+
 public class ParserFactory {
-    public static ExpenseParserBase getParser(String parserType) {
-        if(parserType.equals("XML")) {
+    public static ExpenseParserBase getParser(FileType parserType) {
+        switch (parserType){
+        case XML:
             return new XmlExpenseParser();
-        } else if(parserType.equals("JSON")) {
+        case JSON:
             return new JsonExpenseParser();
-        } else {
+        default:
             throw new IllegalArgumentException("Invalid parser type");
         }
     }
