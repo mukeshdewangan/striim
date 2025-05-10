@@ -88,8 +88,7 @@ public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEn
     }
 
     private boolean isValidEntry(ExpenseEntry entry){
-        if(entry.getAmount() == 0 || description.isEmpty()
-                ||  date == null || currency == null){
+        if(entry.getAmount() == 0 ||  date == null || currency == null){
             System.out.println("Missing one or more field, skipping");
             return false;
         }

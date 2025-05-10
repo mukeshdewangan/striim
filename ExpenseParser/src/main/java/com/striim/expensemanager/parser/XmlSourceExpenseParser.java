@@ -39,6 +39,7 @@ public class XmlSourceExpenseParser implements InputSourceBase {
     XmlSourceExpenseParser(Properties properties){
         expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
     }
+
     @Override
     public Iterator<ExpenseEntry> getExpenses(Properties properties) {
         // Below is Deprecated - parse the XML file and return the list of ExpenseEntry objects
