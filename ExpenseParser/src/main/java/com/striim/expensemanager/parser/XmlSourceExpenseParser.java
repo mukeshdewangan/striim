@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.striim.expensemanager.inputsource.InputSourceBase;
+import com.striim.expensemanager.validator.XMLValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
@@ -39,10 +40,16 @@ import static com.striim.expensemanager.expense.Constants.EXPENSE_FILE_PATH;
 public class XmlSourceExpenseParser implements InputSourceBase {
     private static final Logger logger = LoggerFactory.getLogger(XmlSourceExpenseParser.class);
     private final String expenseFile;
+    XMLValidator xmlValidator;
     ValidatorHandler validatorHandler;
 
     public XmlSourceExpenseParser(Properties properties){
         expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
+        try {
+            xmlValidator = new XMLValidator(ConfigLoader.getInstance().getXMLSchemaPath());
+        } catch (SAXException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
     }
 
     @Override
@@ -59,7 +66,7 @@ public class XmlSourceExpenseParser implements InputSourceBase {
     }
 
     private Iterator<ExpenseEntry> parseLargeXML(String expenseFilePath) throws SAXException, ParserConfigurationException, IOException {
-        validatorHandler = getValidatorHandler();
+        validatorHandler = xmlValidator.getValidatorHandler();
 
         File xmlFile = new File(expenseFilePath);
         SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -82,16 +89,6 @@ public class XmlSourceExpenseParser implements InputSourceBase {
 //        }
 //        return expenseHandler.getExpenses();
         return expenseHandler.iterator();
-    }
-
-    ValidatorHandler getValidatorHandler() throws SAXException {
-        String xsdFilePath = ConfigLoader.getInstance().getXMLSchemaPath();
-
-        File xsdFile = new File(xsdFilePath);
-
-        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = factory.newSchema(xsdFile);
-        return schema.newValidatorHandler();
     }
 
     // Deprecated method, which uses SAX to parse the XML file
