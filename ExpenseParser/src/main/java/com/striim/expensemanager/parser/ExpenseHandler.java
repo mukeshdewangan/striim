@@ -7,9 +7,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import java.util.NoSuchElementException;
 import java.util.concurrent.BlockingQueue;

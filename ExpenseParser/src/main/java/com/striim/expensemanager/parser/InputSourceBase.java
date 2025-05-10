@@ -4,7 +4,6 @@ import com.striim.expensemanager.expense.ExpenseEntry;
 
 import java.util.Iterator;
 
-public interface ExpenseParserBase {
-    void printReport();
-    Iterator<ExpenseEntry> parse(String filePath);
+public interface InputSourceBase {
+    Iterator<ExpenseEntry> getExpenses(String filePath);
 }

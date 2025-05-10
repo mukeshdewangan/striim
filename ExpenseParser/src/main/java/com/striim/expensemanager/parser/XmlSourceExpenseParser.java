@@ -29,11 +29,11 @@ import javax.xml.validation.ValidatorHandler;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class XmlExpenseParser implements ExpenseParserBase {
+public class XmlSourceExpenseParser implements InputSourceBase {
     ValidatorHandler validatorHandler;
 
     @Override
-    public Iterator<ExpenseEntry> parse(String filePath) {
+    public Iterator<ExpenseEntry> getExpenses(String filePath) {
         //List<ExpenseEntry> expenseEntries = parseInternal(filePath); // parse the XML file and return the list of ExpenseEntry objects
         try {
             Iterator<ExpenseEntry> iterator = parseLargeXML(filePath);
@@ -120,10 +120,5 @@ public class XmlExpenseParser implements ExpenseParserBase {
             System.out.println("Error: " + e.getMessage());
         }
         return expenses;
-    }
-
-    @Override
-    public void printReport() {
-        throw new UnsupportedOperationException("Currently not supported");
     }
 }

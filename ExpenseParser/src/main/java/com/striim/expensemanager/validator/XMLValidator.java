@@ -21,7 +21,7 @@ public class XMLValidator {
 
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = factory.newSchema(xsdFile);
-        schema.newValidatorHandler();
+        validatorHandler = schema.newValidatorHandler();
     }
 
     public ValidatorHandler getValidatorHandler() {

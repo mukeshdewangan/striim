@@ -3,24 +3,27 @@ package com.striim.expensemanager.driver;
 import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.currency.CurrencyProvider;
 import com.striim.expensemanager.expense.ExpenseEntry;
-import com.striim.expensemanager.parser.ExpenseParserBase;
-import com.striim.expensemanager.parser.ParserFactory;
+import com.striim.expensemanager.parser.InputSourceBase;
+import com.striim.expensemanager.parser.InputSourceFactory;
 
 import java.util.Iterator;
 import java.util.Properties;
 
+import static com.striim.expensemanager.expense.Constants.EXPENSE_FILE_PATH;
+import static com.striim.expensemanager.expense.Constants.FILETYPE;
+
 public class ExpenseCalculator {
     private final CurrencyProvider currencyProvider;
-    ExpenseParserBase parser;
+    InputSourceBase inputSource;
 
     ExpenseCalculator(CurrencyProvider currencyProvider){
         this.currencyProvider = currencyProvider;
     }
 
-    public double calculateTotalExpense(Properties properties, CurrencyCode targetCurrency) {
-        this.parser = ParserFactory.getParser(FileType.valueOf(properties.getProperty("fileType")));
+    public double calculateExpense(Properties properties, CurrencyCode targetCurrency) {
+        this.inputSource = InputSourceFactory.createSource(FileType.valueOf(properties.getProperty(FILETYPE)));
 
-        Iterator<ExpenseEntry> expensesIter = calculateExpense(properties);
+        Iterator<ExpenseEntry> expensesIter = calculateExpenseInternal(properties);
 
         double totalExpense = 0;
         while(expensesIter.hasNext()){
@@ -28,18 +31,12 @@ public class ExpenseCalculator {
             totalExpense += convertExpenseToTargetCurrency(expensesIter.next(), targetCurrency);
         }
 
-//        while (true) {
-//            ExpenseEntry entry = queue.take();
-//            if (entry == POISON_PILL) break;
-//            process(entry);
-//        }
-
         return totalExpense;
     }
 
-    private Iterator<ExpenseEntry> calculateExpense(Properties properties) {
-        String expenseFile = properties.getProperty("expenseFilePath");
-        return parser.parse(expenseFile);
+    private Iterator<ExpenseEntry> calculateExpenseInternal(Properties properties) {
+        String expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
+        return inputSource.getExpenses(expenseFile);
     }
 
     private double convertExpenseToTargetCurrency(ExpenseEntry expenseEntry, CurrencyCode targetCurrency) {
