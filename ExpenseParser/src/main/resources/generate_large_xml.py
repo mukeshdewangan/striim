@@ -29,5 +29,5 @@ def generate_large_xml(file_path, entry_count):
 
 if __name__ == "__main__":
     # Change 10_000_000 to increase or decrease file size (~2–3 GB for that count)
-    generate_large_xml("large_expenses.xml", entry_count=10)
+    generate_large_xml("large_expenses.xml", entry_count=100)
     print("✅ large_expenses.xml generated successfully.")

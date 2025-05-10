@@ -1,0 +1,602 @@
+<expenses>
+    <expense>
+        <description> Boating </description>
+        <currencytype> USD </currencytype>
+        <amount> 366.4 </amount>
+        <date> August 15, 2021 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 408.85 </amount>
+        <date> November 09, 2021 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 275.3 </amount>
+        <date> October 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> USD </currencytype>
+        <amount> 163.48 </amount>
+        <date> June 21, 2023 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> USD </currencytype>
+        <amount> 278.53 </amount>
+        <date> January 24, 2020 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> EUR </currencytype>
+        <amount> 405.41 </amount>
+        <date> June 02, 2021 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 429.62 </amount>
+        <date> September 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> INR </currencytype>
+        <amount> 180.45 </amount>
+        <date> May 07, 2020 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> USD </currencytype>
+        <amount> 110.21 </amount>
+        <date> May 09, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> INR </currencytype>
+        <amount> 86.05 </amount>
+        <date> March 19, 2022 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 474.93 </amount>
+        <date> August 12, 2020 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> EUR </currencytype>
+        <amount> 387.91 </amount>
+        <date> November 24, 2020 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 450.36 </amount>
+        <date> April 20, 2023 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> INR </currencytype>
+        <amount> 279.44 </amount>
+        <date> June 23, 2020 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> EUR </currencytype>
+        <amount> 235.54 </amount>
+        <date> January 25, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> EUR </currencytype>
+        <amount> 476.25 </amount>
+        <date> January 06, 2024 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> USD </currencytype>
+        <amount> 278.01 </amount>
+        <date> June 29, 2020 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> EUR </currencytype>
+        <amount> 74.04 </amount>
+        <date> October 19, 2021 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 394.8 </amount>
+        <date> February 13, 2021 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> EUR </currencytype>
+        <amount> 411.63 </amount>
+        <date> July 22, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 29.28 </amount>
+        <date> October 15, 2022 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 54.57 </amount>
+        <date> August 22, 2023 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> USD </currencytype>
+        <amount> 432.01 </amount>
+        <date> March 11, 2022 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 66.72 </amount>
+        <date> October 07, 2022 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 154.52 </amount>
+        <date> November 16, 2022 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> EUR </currencytype>
+        <amount> 155.17 </amount>
+        <date> February 12, 2023 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 382.82 </amount>
+        <date> February 01, 2022 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> EUR </currencytype>
+        <amount> 240.91 </amount>
+        <date> May 30, 2021 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 88.44 </amount>
+        <date> May 02, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 199.2 </amount>
+        <date> June 02, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 147.32 </amount>
+        <date> July 15, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> INR </currencytype>
+        <amount> 257.66 </amount>
+        <date> April 09, 2021 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> EUR </currencytype>
+        <amount> 276.91 </amount>
+        <date> July 27, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> EUR </currencytype>
+        <amount> 168.98 </amount>
+        <date> September 19, 2021 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> USD </currencytype>
+        <amount> 374.13 </amount>
+        <date> October 10, 2023 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 492.83 </amount>
+        <date> August 08, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> INR </currencytype>
+        <amount> 317.91 </amount>
+        <date> June 08, 2022 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 409.2 </amount>
+        <date> September 09, 2020 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 135.9 </amount>
+        <date> November 11, 2022 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 350.7 </amount>
+        <date> July 23, 2021 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 255.68 </amount>
+        <date> April 08, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 27.36 </amount>
+        <date> September 02, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> INR </currencytype>
+        <amount> 335.09 </amount>
+        <date> August 05, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> INR </currencytype>
+        <amount> 15.56 </amount>
+        <date> July 21, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 471.54 </amount>
+        <date> January 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> EUR </currencytype>
+        <amount> 315.31 </amount>
+        <date> April 03, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 62.16 </amount>
+        <date> May 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> INR </currencytype>
+        <amount> 106.04 </amount>
+        <date> October 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 11.26 </amount>
+        <date> April 26, 2023 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 139.96 </amount>
+        <date> December 28, 2022 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> EUR </currencytype>
+        <amount> 175.45 </amount>
+        <date> February 18, 2022 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 236.9 </amount>
+        <date> November 27, 2023 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> EUR </currencytype>
+        <amount> 451.73 </amount>
+        <date> March 14, 2021 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 99.78 </amount>
+        <date> July 06, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> EUR </currencytype>
+        <amount> 291.15 </amount>
+        <date> October 29, 2021 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> USD </currencytype>
+        <amount> 185.23 </amount>
+        <date> September 09, 2020 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> USD </currencytype>
+        <amount> 201.57 </amount>
+        <date> November 30, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 313.54 </amount>
+        <date> November 11, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 254.61 </amount>
+        <date> June 29, 2021 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 302.27 </amount>
+        <date> August 25, 2022 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 50.16 </amount>
+        <date> August 31, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 23.09 </amount>
+        <date> October 07, 2023 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> INR </currencytype>
+        <amount> 87.34 </amount>
+        <date> September 12, 2021 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 378.2 </amount>
+        <date> October 20, 2022 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> EUR </currencytype>
+        <amount> 116.13 </amount>
+        <date> September 24, 2022 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> INR </currencytype>
+        <amount> 180.63 </amount>
+        <date> July 29, 2021 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 66.47 </amount>
+        <date> July 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> INR </currencytype>
+        <amount> 359.7 </amount>
+        <date> June 11, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> EUR </currencytype>
+        <amount> 482.85 </amount>
+        <date> July 12, 2022 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 137.81 </amount>
+        <date> October 26, 2020 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> USD </currencytype>
+        <amount> 214.35 </amount>
+        <date> June 29, 2020 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 437.99 </amount>
+        <date> December 09, 2021 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> EUR </currencytype>
+        <amount> 340.26 </amount>
+        <date> June 08, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> INR </currencytype>
+        <amount> 24.71 </amount>
+        <date> April 28, 2022 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> INR </currencytype>
+        <amount> 442.52 </amount>
+        <date> August 14, 2021 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> INR </currencytype>
+        <amount> 218.92 </amount>
+        <date> February 22, 2020 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 209.84 </amount>
+        <date> August 14, 2022 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> USD </currencytype>
+        <amount> 497.06 </amount>
+        <date> December 05, 2023 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> INR </currencytype>
+        <amount> 398.25 </amount>
+        <date> April 02, 2023 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> INR </currencytype>
+        <amount> 345.2 </amount>
+        <date> August 31, 2021 </date>
+    </expense>
+    <expense>
+        <description> Lunch </description>
+        <currencytype> USD </currencytype>
+        <amount> 256.13 </amount>
+        <date> June 20, 2020 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> USD </currencytype>
+        <amount> 9.55 </amount>
+        <date> December 20, 2023 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> INR </currencytype>
+        <amount> 380.83 </amount>
+        <date> August 23, 2023 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 326.8 </amount>
+        <date> September 21, 2022 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> USD </currencytype>
+        <amount> 209.38 </amount>
+        <date> August 23, 2020 </date>
+    </expense>
+    <expense>
+        <description> Train Ticket </description>
+        <currencytype> USD </currencytype>
+        <amount> 72.22 </amount>
+        <date> January 19, 2021 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> EUR </currencytype>
+        <amount> 169.63 </amount>
+        <date> May 05, 2021 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 229.73 </amount>
+        <date> September 24, 2022 </date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> USD </currencytype>
+        <amount> 436.79 </amount>
+        <date> December 10, 2022 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> USD </currencytype>
+        <amount> 61.73 </amount>
+        <date> May 11, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> INR </currencytype>
+        <amount> 200.89 </amount>
+        <date> December 11, 2023 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> USD </currencytype>
+        <amount> 114.51 </amount>
+        <date> May 25, 2022 </date>
+    </expense>
+    <expense>
+        <description> Conference </description>
+        <currencytype> INR </currencytype>
+        <amount> 375.1 </amount>
+        <date> November 24, 2023 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> USD </currencytype>
+        <amount> 237.46 </amount>
+        <date> April 25, 2020 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> USD </currencytype>
+        <amount> 351.58 </amount>
+        <date> June 14, 2022 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 37.63 </amount>
+        <date> February 21, 2022 </date>
+    </expense>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> EUR </currencytype>
+        <amount> 374.5 </amount>
+        <date> August 07, 2020 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> EUR </currencytype>
+        <amount> 48.72 </amount>
+        <date> October 26, 2023 </date>
+    </expense>
+    <expense>
+        <description> Hotel Stay </description>
+        <currencytype> INR </currencytype>
+        <amount> 466.4 </amount>
+        <date> October 06, 2020 </date>
+    </expense>
+    <expense>
+        <description> Flight </description>
+        <currencytype> INR </currencytype>
+        <amount> 56.32 </amount>
+        <date> December 11, 2022 </date>
+    </expense>
+</expenses>
