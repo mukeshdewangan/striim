@@ -28,27 +28,34 @@ import javax.xml.validation.ValidatorHandler;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import static com.striim.expensemanager.expense.Constants.EXPENSE_FILE_PATH;
 
 public class XmlSourceExpenseParser implements InputSourceBase {
     ValidatorHandler validatorHandler;
+    String expenseFile = null;
 
+    XmlSourceExpenseParser(Properties properties){
+        expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
+    }
     @Override
-    public Iterator<ExpenseEntry> getExpenses(String filePath) {
-        //List<ExpenseEntry> expenseEntries = parseInternal(filePath); // parse the XML file and return the list of ExpenseEntry objects
+    public Iterator<ExpenseEntry> getExpenses(Properties properties) {
+        // Below is Deprecated - parse the XML file and return the list of ExpenseEntry objects
+        //List<ExpenseEntry> expenseEntries = parseInternal(filePath);
         try {
-            Iterator<ExpenseEntry> iterator = parseLargeXML(filePath);
+            Iterator<ExpenseEntry> iterator = parseLargeXML(expenseFile);
             return iterator;
         }
         catch (Exception e){
-            System.out.println("Error: " + e.getMessage());
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
 
     private Iterator<ExpenseEntry> parseLargeXML(String expenseFilePath) throws SAXException, ParserConfigurationException, IOException {
-        File xmlFile = new File(expenseFilePath);
         validatorHandler = getValidatorHandler();
 
+        File xmlFile = new File(expenseFilePath);
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(true);
         SAXParser saxParser = spf.newSAXParser();

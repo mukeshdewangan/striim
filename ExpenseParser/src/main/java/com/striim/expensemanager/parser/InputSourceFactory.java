@@ -2,8 +2,10 @@ package com.striim.expensemanager.parser;
 
 import com.striim.expensemanager.driver.FileType;
 
+import java.util.Properties;
+
 public class InputSourceFactory {
-    public static InputSourceBase createSource(FileType fileType) {
+    public static InputSourceBase createSource(FileType fileType, Properties properties) {
         switch (fileType){
         case XML:
             return new XmlSourceExpenseParser();

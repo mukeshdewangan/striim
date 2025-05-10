@@ -3,7 +3,8 @@ package com.striim.expensemanager.parser;
 import com.striim.expensemanager.expense.ExpenseEntry;
 
 import java.util.Iterator;
+import java.util.Properties;
 
 public interface InputSourceBase {
-    Iterator<ExpenseEntry> getExpenses(String filePath);
+    Iterator<ExpenseEntry> getExpenses(Properties properties);
 }

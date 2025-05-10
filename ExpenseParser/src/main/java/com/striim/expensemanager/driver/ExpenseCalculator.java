@@ -21,22 +21,16 @@ public class ExpenseCalculator {
     }
 
     public double calculateExpense(Properties properties, CurrencyCode targetCurrency) {
-        this.inputSource = InputSourceFactory.createSource(FileType.valueOf(properties.getProperty(FILETYPE)));
+        this.inputSource = InputSourceFactory.createSource(FileType.valueOf(properties.getProperty(FILETYPE)), properties);
 
-        Iterator<ExpenseEntry> expensesIter = calculateExpenseInternal(properties);
+        Iterator<ExpenseEntry> expensesIter = inputSource.getExpenses(properties);
 
         double totalExpense = 0;
         while(expensesIter.hasNext()){
-            //totalExpense += convertExpenseToTargetCurrency(expenseEntry, targetCurrency);
             totalExpense += convertExpenseToTargetCurrency(expensesIter.next(), targetCurrency);
         }
 
         return totalExpense;
-    }
-
-    private Iterator<ExpenseEntry> calculateExpenseInternal(Properties properties) {
-        String expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
-        return inputSource.getExpenses(expenseFile);
     }
 
     private double convertExpenseToTargetCurrency(ExpenseEntry expenseEntry, CurrencyCode targetCurrency) {
