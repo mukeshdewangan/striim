@@ -5,7 +5,6 @@
 2. mvn clean install
 3. ExpenseManagerDriver is the main class which starts execution.
 
-
 ## Features Implementated
 1. ExpenseCalculator is the major class which takes CurrencyProvider and InputSourceBase as constructor params. It has function calculateExpense(Properties, CurrencyCode) which returns the total expenses after parsing the given file in Properties. 
 2. It uses Dependency injection to inject InputSource of desired type, so that ExpenseCalculator is not tightly coupled with it.
@@ -16,3 +15,5 @@
 7. To handle large XML the validation and parsing is happening simulatanously. ExpenseHandler parse the <expense> while XMLValidator validate it again an XSD file.
 8. Added Logback logger for easily swapping with other logger.
 
+## Sequence diagram 
+![Screenshot 2025-05-10 at 1 03 02 PM](https://github.com/user-attachments/assets/47f3d557-e17c-4b8b-8117-d78f3d3fb2b5)
