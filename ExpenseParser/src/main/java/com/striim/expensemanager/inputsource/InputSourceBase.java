@@ -1,4 +1,4 @@
-package com.striim.expensemanager.parser;
+package com.striim.expensemanager.inputsource;
 
 import com.striim.expensemanager.expense.ExpenseEntry;
 

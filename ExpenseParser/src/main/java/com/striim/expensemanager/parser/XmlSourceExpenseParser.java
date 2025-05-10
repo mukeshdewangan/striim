@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
+import com.striim.expensemanager.inputsource.InputSourceBase;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -36,7 +37,7 @@ public class XmlSourceExpenseParser implements InputSourceBase {
     ValidatorHandler validatorHandler;
     String expenseFile = null;
 
-    XmlSourceExpenseParser(Properties properties){
+    public XmlSourceExpenseParser(Properties properties){
         expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
     }
 
