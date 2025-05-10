@@ -3,28 +3,30 @@ package com.striim.expensemanager.driver;
 import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.currency.CurrencyProvider;
 import com.striim.expensemanager.expense.ExpenseEntry;
-import com.striim.expensemanager.parser.ExpenseFileParser;
+import com.striim.expensemanager.parser.ExpenseParserBase;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 
 public class ExpenseCalculator {
     CurrencyProvider currencyProvider;
-    ExpenseFileParser parser;
+    ExpenseParserBase parser;
     CurrencyCode targetCurrency;
 
-    ExpenseCalculator(CurrencyProvider currencyProvider, CurrencyCode targetCurrency, ExpenseFileParser parser){
+    ExpenseCalculator(CurrencyProvider currencyProvider, CurrencyCode targetCurrency, ExpenseParserBase parser){
         this.currencyProvider = currencyProvider;
         this.targetCurrency = targetCurrency;
         this.parser = parser;
+    }
+
+    public void setTargetCurrency(CurrencyCode target){
+        this.targetCurrency = target;
     }
 
     public double calculateTotalExpense(Properties properties) {
         Iterator<ExpenseEntry> expensesIter = calculateExpense(properties);
 
         double totalExpense = 0;
-        //for (ExpenseEntry expenseEntry : expenses) {
         while(expensesIter.hasNext()){
             //totalExpense += convertExpenseToTargetCurrency(expenseEntry, targetCurrency);
             totalExpense += convertExpenseToTargetCurrency(expensesIter.next(), targetCurrency);
@@ -39,12 +41,9 @@ public class ExpenseCalculator {
         return totalExpense;
     }
 
-    //later make it private
     private Iterator<ExpenseEntry> calculateExpense(Properties properties) {
-        // parse XML file
         String expenseFile = properties.getProperty("expenseFilePath");
-        String xsdFile = properties.getProperty("xsdFilePath");
-        return parser.parse(expenseFile,xsdFile);
+        return parser.parse(expenseFile);
     }
 
     private double convertExpenseToTargetCurrency(ExpenseEntry expenseEntry, CurrencyCode targetCurrency) {

@@ -21,7 +21,6 @@ import static com.striim.expensemanager.expense.Constants.EXPENSE;
 public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEntry> {
     private final BlockingQueue<ExpenseEntry> queue = new LinkedBlockingQueue<>();
     private static final ExpenseEntry POISON_PILL_ENTRY = new ExpenseEntry("EOF", null, 0, null);
-    private static final String POISON_PILL = "##EOF##";
     private StringBuilder content = new StringBuilder();
     //public List<ExpenseEntry> expenses = new ArrayList<>();
     private boolean finished = false;
@@ -71,13 +70,32 @@ public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEn
                 //System.out.println(entry);
                 //expenses.add(entry);
                 try {
-                    queue.put(entry);
+                    if(isValidEntry(entry)){
+                        queue.put(entry);
+                    }
+                    resetValues();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while enqueueing entry", e);
                 }
                 break;
         }
+    }
+
+    private void resetValues(){
+        description = null;
+        currency = null;
+        date = null;
+        amount = 0;
+    }
+
+    private boolean isValidEntry(ExpenseEntry entry){
+        if(entry.getAmount() == 0 || description.isEmpty()
+                ||  date == null || currency == null){
+            System.out.println("Missing one or more field, skipping");
+            return false;
+        }
+        return true;
     }
 
     @Override

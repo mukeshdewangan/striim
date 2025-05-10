@@ -1,18 +1,33 @@
 package com.striim.expensemanager.validator;
 
 
+import org.xml.sax.SAXException;
+
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
+import javax.xml.validation.ValidatorHandler;
+import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class XMLValidator implements FileValidator {
+public class XMLValidator {
+    ValidatorHandler validatorHandler;
+    public XMLValidator(String schemaFile) throws SAXException {
+        File xsdFile = new File(schemaFile);
 
-    @Override
+        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = factory.newSchema(xsdFile);
+        schema.newValidatorHandler();
+    }
+
+    public ValidatorHandler getValidatorHandler() {
+        return validatorHandler;
+    }
+
     public boolean isValidFile(String filePath, String... schemaFile) {
         try (
             InputStream xml = Files.newInputStream(Paths.get(filePath));

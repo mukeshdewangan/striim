@@ -1,0 +1,20 @@
+<expenses>
+    <expense>
+        <description> Coffee In Airport </description>
+        <currencytype> USD </currencytype>
+        <amount> 20 </amount>
+        <date> August 15, 2020 </date>
+    </expense>
+    <expense>
+        <description> Boating </description>
+        <currencytype> EUR </currencytype>
+        <amount233> 150 </amount233>
+        <date> September 25, 2020</date>
+    </expense>
+    <expense>
+        <description> Taxi </description>
+        <currencytype> INR </currencytype>
+        <amount> 200 </amount>
+        <date> October 1, 2020 </date>
+    </expense>
+</expenses>

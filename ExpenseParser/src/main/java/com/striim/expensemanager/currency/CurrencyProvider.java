@@ -3,6 +3,9 @@ package com.striim.expensemanager.currency;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+// TODO: Implement a real currency converter using an API or database
+// TODO: Add a method to get the currency value for a given date
+// Currently it supports some commonly used currency pairs
 public class CurrencyProvider {
     public CurrencyProvider(){}
 
