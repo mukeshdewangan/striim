@@ -1,6 +1,5 @@
 package com.striim.expensemanager.inputsource;
 
-import com.striim.expensemanager.driver.FileType;
 import com.striim.expensemanager.expense.Constants;
 
 import java.util.List;

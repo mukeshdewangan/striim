@@ -1,6 +1,7 @@
 package com.striim.expensemanager.validator;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -15,6 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class XMLValidator {
+    private static final Logger logger = LoggerFactory.getLogger(XMLValidator.class);
+
     ValidatorHandler validatorHandler;
     public XMLValidator(String schemaFile) throws SAXException {
         File xsdFile = new File(schemaFile);
@@ -34,7 +37,7 @@ public class XMLValidator {
             InputStream xsd = Files.newInputStream(Paths.get(schemaFile[0]))
         ) {
             if (xml == null || xsd == null) {
-                System.out.println("Missing XML or XSD file.");
+                logger.info("Missing XML or XSD file.");
                 return false;
             }
 
@@ -43,11 +46,11 @@ public class XMLValidator {
             Validator validator = schema.newValidator();
 
             validator.validate(new StreamSource(xml));
-            System.out.println("XML is valid against the XSD.");
+            logger.info("XML is valid against the XSD.");
             return true;
 
         } catch (Exception e) {
-            System.out.println("Validation failed: " + e.getMessage());
+            logger.info("Validation failed: " + e.getMessage());
             return false;
         }
     }

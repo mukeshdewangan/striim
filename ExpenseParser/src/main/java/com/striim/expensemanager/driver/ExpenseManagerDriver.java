@@ -7,6 +7,8 @@ import com.striim.expensemanager.inputsource.InputSourceFactory;
 import com.striim.expensemanager.inputsource.InputSourceProvider;
 import com.striim.expensemanager.inputsource.XmlSourceProvider;
 import com.striim.expensemanager.inputsource.JsonSourceProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,10 @@ import java.util.Properties;
 import static com.striim.expensemanager.expense.Constants.*;
 
 public class ExpenseManagerDriver {
+    private static final Logger logger = LoggerFactory.getLogger(ExpenseManagerDriver.class);
+
     public static void main( String[] args ) {
+
         Properties props = new Properties();
         props.setProperty(EXPENSE_FILE_PATH, "src/main/resources/sample_expenses.xml");
         props.setProperty(FILETYPE, "XML");
@@ -26,14 +31,15 @@ public class ExpenseManagerDriver {
         ExpenseCalculator expenseCalculator = new ExpenseCalculator(currencyProvider, inputSource);
 
         double totalExpense = expenseCalculator.calculateExpense(props, targetCurrency);
-        System.out.println("Total Expense " + totalExpense + " " + targetCurrency);
+        logger.info("Total Expense " + totalExpense + " " + targetCurrency);
 
         targetCurrency = CurrencyCode.INR;
 
         totalExpense = expenseCalculator.calculateExpense(props,targetCurrency );
-        System.out.println("Total Expense " + totalExpense + " " + targetCurrency);
+        logger.info("Total Expense " + totalExpense + " " + targetCurrency);
     }
 
+    // Provider class for InputSource
     private static InputSourceBase getInputSource(Properties props){
         List<InputSourceProvider> providers = new ArrayList<>();
         providers.add(new XmlSourceProvider());

@@ -3,6 +3,7 @@ package com.striim.expensemanager.parser;
 import com.striim.expensemanager.currency.CurrencyCode;
 import com.striim.expensemanager.date_util.DateTimeConverter;
 import com.striim.expensemanager.driver.ConfigLoader;
+import com.striim.expensemanager.driver.ExpenseManagerDriver;
 import com.striim.expensemanager.expense.Constants;
 import com.striim.expensemanager.expense.ExpenseEntry;
 
@@ -16,6 +17,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.striim.expensemanager.inputsource.InputSourceBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -34,8 +37,9 @@ import java.util.Properties;
 import static com.striim.expensemanager.expense.Constants.EXPENSE_FILE_PATH;
 
 public class XmlSourceExpenseParser implements InputSourceBase {
+    private static final Logger logger = LoggerFactory.getLogger(XmlSourceExpenseParser.class);
+    private final String expenseFile;
     ValidatorHandler validatorHandler;
-    String expenseFile = null;
 
     public XmlSourceExpenseParser(Properties properties){
         expenseFile = properties.getProperty(EXPENSE_FILE_PATH);
@@ -74,7 +78,7 @@ public class XmlSourceExpenseParser implements InputSourceBase {
 
 //        for (ExpenseEntry entry : expenseHandler) {
 //            // Process each entry lazily
-//            System.out.println(entry);
+//            logger.info(entry);
 //        }
 //        return expenseHandler.getExpenses();
         return expenseHandler.iterator();
@@ -122,11 +126,11 @@ public class XmlSourceExpenseParser implements InputSourceBase {
                 expenses.add(entry);
             }
 
-            System.out.println("\nParsed Expense Entries:");
+            logger.info("\nParsed Expense Entries:");
             return expenses;
 
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            logger.info("Error: " + e.getMessage());
         }
         return expenses;
     }

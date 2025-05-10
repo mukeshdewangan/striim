@@ -8,7 +8,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDateTime;
 import java.util.Iterator;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.NoSuchElementException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -17,6 +18,7 @@ import static com.striim.expensemanager.expense.Constants.EXPENSE;
 
 // Logic to process XML elements without loading everything
 public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEntry> {
+    private static final Logger logger = LoggerFactory.getLogger(ExpenseHandler.class);
     private final BlockingQueue<ExpenseEntry> queue = new LinkedBlockingQueue<>();
     private static final ExpenseEntry POISON_PILL_ENTRY = new ExpenseEntry("EOF", null, 0, null);
     private StringBuilder content = new StringBuilder();
@@ -89,7 +91,7 @@ public class ExpenseHandler extends DefaultHandler implements Iterable<ExpenseEn
 
     private boolean isValidEntry(ExpenseEntry entry){
         if(entry.getAmount() == 0 ||  date == null || currency == null){
-            System.out.println("Missing one or more field, skipping");
+            logger.info("Missing one or more field, skipping");
             return false;
         }
         return true;
